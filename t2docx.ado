@@ -65,12 +65,12 @@ program define t2docx
 		}
 		tabstat `varlist' if `touse', by(`by') save
 
-		putdocx table ttbl(1, 1) = ("varname"), halign(left) 
-		putdocx table ttbl(1, 2) = ("obs(`r(name1)')"), halign(right) 
+		putdocx table ttbl(1, 1) = ("varname"), halign(left)
+		putdocx table ttbl(1, 2) = ("obs(`r(name1)')"), halign(right)
 		putdocx table ttbl(1, 3) = ("mean(`r(name1)')"), halign(right)
-		putdocx table ttbl(1, 4) = ("obs(`r(name2)')"), halign(right) 
-		putdocx table ttbl(1, 5) = ("mean(`r(name2)')"), halign(right) 
-		putdocx table ttbl(1, 6) = ("mean-diff"), halign(right) 
+		putdocx table ttbl(1, 4) = ("obs(`r(name2)')"), halign(right)
+		putdocx table ttbl(1, 5) = ("mean(`r(name2)')"), halign(right)
+		putdocx table ttbl(1, 6) = ("mean-diff"), halign(right)
 		if "`t'" == "" & "`p'" == "" & "`se'" == "" putdocx table ttbl(1, 7) = ("t"), halign(right)
 		else if "`p'" != "" putdocx table ttbl(1, `colnum') = ("p"), halign(right)
 		else if "`se'" != "" putdocx table ttbl(1, `colnum') = ("se"), halign(right)
@@ -151,7 +151,7 @@ program define t2docx
 			putdocx save `"`using'"', `replace'`append'
 		}
 	}
-	di as txt `"t-test table have been written to file {browse `using'}"'
+	di as txt `"t-test table have been written to file {browse "`using'"}"'
 end
 
 mata
